@@ -27,19 +27,19 @@ class MinRubyParser
       ["method_call", recv, name, []]
     when :fcall
       name = exp[1][1]
-      ["func_call", name, []]
+      ["func_call", name]
     when :method_add_arg
       call = simplify(exp[1])
       e = exp[2]
       e = e[1] || [] if e[0] == :arg_paren
       e = e[1] || [] if e[0] == :args_add_block
       e = e.map {|e_| simplify(e_) }
-      call[call[0] == "func_call" ? 2 : 3] = e
+      call[(call[0] == "func_call" ? 2 : 3)..-1] = e
       call
     when :command
       name = exp[1][1]
       args = exp[2][1].map {|e_| simplify(e_) }
-      ["func_call", name, args]
+      ["func_call", name, *args]
     when :if, :elsif
       cond_exp = simplify(exp[1])
       then_exp = make_stmts(exp[2])
@@ -123,15 +123,15 @@ class MinRubyParser
     when :array
       ["ary_new", *(exp[1] ? exp[1].map {|e_| simplify(e_) } : [])]
     when :hash
-      kvs = []
+      kvs = ["hash_new"]
       if exp[1]
         exp[1][1].each do |e_|
           key = simplify(e_[1])
           val = simplify(e_[2])
-          kvs << [key, val]
+          kvs << key << val
         end
       end
-      ["hash_new", kvs]
+      kvs
     when :void_stmt
       ["lit", nil]
     when :paren

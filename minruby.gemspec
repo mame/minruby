@@ -1,12 +1,12 @@
 # coding: utf-8
 Gem::Specification.new do |spec|
   spec.name          = "minruby"
-  spec.version       = "1.0"
+  spec.version       = "1.0.1"
   spec.authors       = ["Yusuke Endoh"]
   spec.email         = ["mame@ruby-lang.org"]
 
   spec.summary       = %q{A helper library for "Ruby de manabu Ruby"}
-  spec.description   = %q{This library provides some helper modules to implement a toy Ruby implementation.  This is created for a series of articles, "Ruby de manabu Ruby (Learning Ruby by Ruby)", in ASCII.jp}
+  spec.description   = %q{This library provides some helper modules to implement a toy Ruby implementation.  This is created for a series of articles, "Ruby de manabu Ruby (Learning Ruby by implementing Ruby)", in ASCII.jp}
   spec.homepage      = "http://github.com/mame/minruby/"
   spec.license       = "MIT"
 

@@ -35,8 +35,8 @@ class TTest < Minitest::Test
   end
 
   def test_parse_func_call
-    assert_equal ["func_call", "foo", [["lit", 1], ["lit", 42]]], minruby_parse("foo(1, 42)")
-    assert_equal ["func_call", "foo", [["lit", 1], ["lit", 42]]], minruby_parse("foo 1, 42")
+    assert_equal ["func_call", "foo", ["lit", 1], ["lit", 42]], minruby_parse("foo(1, 42)")
+    assert_equal ["func_call", "foo", ["lit", 1], ["lit", 42]], minruby_parse("foo 1, 42")
   end
 
   def test_parse_if
@@ -59,7 +59,7 @@ class TTest < Minitest::Test
 
   def test_parse_hash
     assert_equal ["stmts",
-      ["var_assign", "h", ["hash_new", [[["lit", "foo"], ["lit", 42]]]]],
+      ["var_assign", "h", ["hash_new", ["lit", "foo"], ["lit", 42]]],
       ["ary_ref", ["var_ref", "h"], ["lit", "foo"]],
       ["ary_assign", ["var_ref", "h"], ["lit", "foo"], ["lit", nil]]
     ], minruby_parse("h = {\"foo\" => 42}; h[\"foo\"]; h[\"foo\"] = nil")
