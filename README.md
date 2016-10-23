@@ -17,7 +17,7 @@ ASCII.jp の Web 連載『[Ruby で学ぶ Ruby](http://ascii.jp/elem/000/001/230
 
 ## 別のインストール方法
 
-`gem` でのインストールがうまく行かない場合は、[ライブラリのファイル](https://github.com/mame/minruby/lib/minruby.rb)をダウンロードしてあなたのプログラムと同じフォルダに置いてください。それから、あなたのプログラムの最初の行に
+`gem` でのインストールがうまく行かない場合は、[ライブラリのファイル](https://raw.githubusercontent.com/mame/minruby/master/lib/minruby.rb)をダウンロードしてあなたのプログラムと同じフォルダに置いてください。それから、あなたのプログラムの最初の行に
 
     require "./minruby"
 
