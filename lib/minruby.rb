@@ -59,6 +59,10 @@ class MinRubyParser
       cond_exp = simplify(exp[1])
       body_exp = make_stmts(exp[2])
       ["while", cond_exp, body_exp]
+    when :while_mod
+      cond_exp = simplify(exp[1])
+      body_exp = make_stmts(exp[2][1][1])
+      ["while2", cond_exp, body_exp]
     when :binary
       exp1 = simplify(exp[1])
       op = exp[2]

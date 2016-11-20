@@ -49,6 +49,10 @@ class TTest < Minitest::Test
     assert_equal ["while", ["lit", true], ["lit", 1]], minruby_parse("while true; 1 end")
   end
 
+  def test_parse_while2
+    assert_equal ["while2", ["lit", true], ["lit", 1]], minruby_parse("begin 1; end while true")
+  end
+
   def test_parse_ary
     assert_equal ["stmts",
       ["var_assign", "a", ["ary_new", ["lit", 1], ["lit", 2], ["lit", 3]]],
