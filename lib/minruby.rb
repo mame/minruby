@@ -85,6 +85,10 @@ class MinRubyParser
       end
     when :@int
       ["lit", exp[1].to_i]
+    when :unary
+      v = simplify(exp[2])
+      raise if v[0] != "lit"
+      ["lit", -v[1]]
     when :string_literal
       ["lit", exp[1][1][1]]
     when :symbol_literal
