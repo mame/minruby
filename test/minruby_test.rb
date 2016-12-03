@@ -3,6 +3,7 @@ require 'test_helper'
 class TTest < Minitest::Test
   def test_parse_literals
     assert_equal ["lit", 1], minruby_parse("1")
+    assert_equal ["lit", -1], minruby_parse("-1")
     assert_equal ["lit", "foo"], minruby_parse("\"foo\"")
     assert_equal ["lit", nil], minruby_parse("nil")
     assert_equal ["lit", true], minruby_parse("true")
