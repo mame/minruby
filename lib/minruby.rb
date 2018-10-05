@@ -51,6 +51,11 @@ class MinRubyParser
         end
       end
       ["if", cond_exp, then_exp, else_exp]
+    when :ifop
+      cond_exp = simplify(exp[1])
+      then_exp = simplify(exp[2])
+      else_exp = simplify(exp[3])
+      ["if", cond_exp, then_exp, else_exp]
     when :if_mod
       cond_exp = simplify(exp[1])
       then_exp = make_stmts([exp[2]])
